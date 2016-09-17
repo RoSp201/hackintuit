@@ -6,12 +6,14 @@ from pylab import *
 def query(location, job_type, year):
 	i =find_index(location)
 	b = X.loc[find_index(location)][job_type]
-	x = 2015 - year
+	x = year - 2015
 	m = slopes[i]
-	print x
-	print m
-	print b
-	return prediction(m,b,x)
+	print "Moving forward ",x, " years"
+	print "income changes by ",m," every year"
+	print "In 2015, your income is ", b
+	p = prediction(m,b,x)
+	print "your income in ",year," is ", p
+	return p
 
 def find_index(location):
 	c = 0
