@@ -22,3 +22,20 @@ API:
 	Bloomberg (?)
 	Bureau of Labor Statistics
 
+
+# ACS API notes
+
+http://api.census.gov/data/2015/acs1/subject/variables.html
+
+S0601_C01_001E	Total!!Total population
+
+S0601_C03_035EA	Native; born in other state in the U.S.!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Some college or associate's degree
+
+S0601_C02_032E	Native; born in state of residence!!EDUCATIONAL ATTAINMENT!!Population 25 years and over
+
+S0601_C02_036E	Native; born in state of residence!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Bachelor's degree
+
+S0601_C01_038E	Total!!INDIVIDUALS' INCOME IN THE PAST 12 MONTHS (IN 2015 INFLATION-ADJUSTED DOLLARS)!!Population 15 years and over
+
+
+S0601_C02_038E	Native; born in state of residence!!INDIVIDUALS' INCOME IN THE PAST 12 MONTHS (IN 2015 INFLATION-ADJUSTED DOLLARS)!!Population 15 years and over
