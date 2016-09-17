@@ -39,3 +39,5 @@ S0601_C01_038E	Total!!INDIVIDUALS' INCOME IN THE PAST 12 MONTHS (IN 2015 INFLATI
 
 
 S0601_C02_038E	Native; born in state of residence!!INDIVIDUALS' INCOME IN THE PAST 12 MONTHS (IN 2015 INFLATION-ADJUSTED DOLLARS)!!Population 15 years and over
+
+http://api.census.gov/data/2015/acs1/subject?get=NAME,S0601_C02_038E&for=county:*&key=53ea32379702c3b68d65622b31b575f41aaae962
