@@ -1,8 +1,10 @@
 import pandas as pd
+import requests
+import StringIO
 
 
-code_to_name = {'NAME':'location name',
-				'S0601_C02_036E':'educational attainment',
+
+code_to_name = {'S0601_C02_036E':'educational attainment',
                 'S0601_C01_039E':'income 0-10K',
                 'S0601_C01_040E':'income 10-15K',
                 'S0601_C01_041E':'income 15-25K',
@@ -37,20 +39,37 @@ code_to_name = {'NAME':'location name',
                 'S2411_C01_032E':'Installation, maintenance, repair',
                 'S2411_C01_034E':'Production Occupation',
                 'S2411_C01_035E':'Transportation',
-                'S2411_C01_036E':'Material Moving',
-                'state':'state',
-                'county':'county',
-                'Unnamed: 39':'wtf	'
+                'S2411_C01_036E':'Material Moving'
                  }
 
 
 base = 'http://api.census.gov/data/2015/acs1/subject?get=NAME,'
-args = 'S0601_C02_036E,S0601_C01_039E,S0601_C01_040E,S0601_C01_041E,S0601_C01_042E,S0601_C01_043E,S0601_C01_044E,S0601_C01_045E,S0601_C01_046E,S2411_C01_001E,S2411_C01_004E,S2411_C01_005E,S2411_C01_006E,S2411_C01_007E,S2411_C01_008E,S2411_C01_009E,S2411_C01_011E,S2411_C01_012E,S2411_C01_013E,S2411_C01_014E,S2411_C01_016E,S2411_C01_017E,S2411_C01_019E,S2411_C01_021E,S2411_C01_022E,S2411_C01_023E,S2411_C01_024E,S2411_C01_025E,S2411_C01_027E,S2411_C01_028E,S2411_C01_030E,S2411_C01_031E,S2411_C01_032E,S2411_C01_034E,S2411_C01_035E,S2411_C01_036E'
+args = ''
+for i in code_to_name:
+	if len(args)==0:
+		args = i;
+	args = args+','+i
 end = '&for=county:*&key=53ea32379702c3b68d65622b31b575f41aaae962'
 url = base+args+end
 
+r = requests.get(url)
+line = r.content
+line = line.replace('[','')
+line = line.replace(']','')
 
-X = pd.read_csv('api_data.csv')
+interFile = "out.csv"
+text_file = open(interFile, "w")
+text_file.write(line)
+text_file.close()
+
+
+X = pd.read_csv(interFile)
 
 for i in X:
-	X.rename(columns={i:code_to_name[i]}, inplace=True)
+	try:
+		X.rename(columns={i:code_to_name[i]}, inplace=True)
+	except:
+		pass
+
+file_name = "clean_data.csv"
+X.to_csv(file_name)
