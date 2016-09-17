@@ -1,0 +1,24 @@
+Inputs
+	occupation
+		sector
+		experience
+	year - projected
+	location - zip code?
+	data-driven
+
+features:
+	us census
+	GDP forecast
+	citiecon surprise index
+	consumer price indeex 
+
+
+
+API:
+	US Census
+	Glassdor
+	IRS
+	Job sites
+	Bloomberg (?)
+	Bureau of Labor Statistics
+
