@@ -82,10 +82,16 @@ def query(location, job_type):
 
 # what can I ask for in the second arg of query
 def what_infos():
+	result = []
 	for i in code_to_name:
 		print code_to_name[i]
+		result.append(code_to_name[i])
+	return result
 
 # what can I ask for in the first arg of query
 def what_locations():
+	result  = []
 	for i in X['NAME']:
 		print i
+		result.append(i)
+	return result
