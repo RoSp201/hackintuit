@@ -74,3 +74,18 @@ for i in X:
 
 file_name = "clean_data.csv"
 X.to_csv(file_name)
+
+
+# just a look up function
+def query(location, job_type):
+	return X[X['NAME'] == location][job_type]
+
+# what can I ask for in the second arg of query
+def what_infos():
+	for i in code_to_name:
+		print code_to_name[i]
+
+# what can I ask for in the first arg of query
+def what_locations():
+	for i in X['NAME']:
+		print i
