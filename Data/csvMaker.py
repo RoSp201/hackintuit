@@ -39,7 +39,8 @@ code_to_name = {'S0601_C02_036E':'educational attainment',
                 'S2411_C01_032E':'Installation, maintenance, repair',
                 'S2411_C01_034E':'Production Occupation',
                 'S2411_C01_035E':'Transportation',
-                'S2411_C01_036E':'Material Moving'
+                'S2411_C01_036E':'Material Moving',
+                'S0601_C01_001E':'Population'
                  }
 
 
