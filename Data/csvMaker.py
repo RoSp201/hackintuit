@@ -1,7 +1,8 @@
+import pandas as pd
 
 
-
-code_to_name = {'S0601_C02_036E':'educational attainment',
+code_to_name = {'NAME':'location name',
+				'S0601_C02_036E':'educational attainment',
                 'S0601_C01_039E':'income 0-10K',
                 'S0601_C01_040E':'income 10-15K',
                 'S0601_C01_041E':'income 15-25K',
@@ -36,7 +37,10 @@ code_to_name = {'S0601_C02_036E':'educational attainment',
                 'S2411_C01_032E':'Installation, maintenance, repair',
                 'S2411_C01_034E':'Production Occupation',
                 'S2411_C01_035E':'Transportation',
-                'S2411_C01_036E':'Material Moving'
+                'S2411_C01_036E':'Material Moving',
+                'state':'state',
+                'county':'county',
+                'Unnamed: 39':'wtf	'
                  }
 
 
@@ -45,3 +49,8 @@ args = 'S0601_C02_036E,S0601_C01_039E,S0601_C01_040E,S0601_C01_041E,S0601_C01_04
 end = '&for=county:*&key=53ea32379702c3b68d65622b31b575f41aaae962'
 url = base+args+end
 
+
+X = pd.read_csv('api_data.csv')
+
+for i in X:
+	X.rename(columns={i:code_to_name[i]}, inplace=True)
