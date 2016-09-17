@@ -38,16 +38,16 @@
       <div class="container centered">
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
-            <h1>Hello {{ name }}, Welcome to Sheen Learning.</h1>
+            <h1>Hello, Welcome to Sheen Learning.</h1>
 
               <br></br>
               
               <form action="" method='post'>    
                 <h3>Select Occupation</h3>
                 <select name='occ'>
-                    <option value='Name1'>LongerName1</option>
-                    <option value='Name2'>LongerName2</option>
-                    <option value='Name3'>LongerName3</option>          
+                    {% for job_id, job_value in jobs.items(): %}
+                      <option value="{{ job_id }}">{{ job_value }}</option>
+                    {% endfor %}
                 </select>
                     <br></br>
                     <h3>Select Location</h3>
