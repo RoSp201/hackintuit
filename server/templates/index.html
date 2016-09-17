@@ -46,15 +46,15 @@
                 <h3>Select Occupation</h3>
                 <select name='occ'>
                     {% for job_id, job_value in jobs.items(): %}
-                      <option value="{{ job_id }}">{{ job_value }}</option>
+                      <option value="{{ job_value }}">{{ job_value }}</option>
                     {% endfor %}
                 </select>
                     <br></br>
                     <h3>Select Location</h3>
                 <select name='loc'>
-                    <option value='Name1'>LongerName1</option>
-                    <option value='Name2'>LongerName2</option>
-                    <option value='Name3'>LongerName3</option>          
+                    {% for loc in locs: %}
+                      <option value="{{ loc.decode('utf-8') }}"> {{ loc.decode('utf-8') }} </option>
+                    {% endfor %}
                 </select>
                 <br><br></br><button class="btn btn-default" type="submit">Submit</button></br>
               </form>
@@ -135,14 +135,14 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/retina-1.1.0.js"></script>
-    <script src="assets/js/jquery.hoverdir.js"></script>
-    <script src="assets/js/jquery.hoverex.min.js"></script>
-    <script src="assets/js/jquery.prettyPhoto.js"></script>
-    <script src="assets/js/jquery.isotope.min.js"></script>
-    <script src="assets/js/custom.js"></script>
+    <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/bootstrap.min.js"></script>
+    <script src="/static/assets/js/retina-1.1.0.js"></script>
+    <script src="/static/assets/js/jquery.hoverdir.js"></script>
+    <script src="/static/assets/js/jquery.hoverex.min.js"></script>
+    <script src="/static/assets/js/jquery.prettyPhoto.js"></script>
+    <script src="/static/assets/js/jquery.isotope.min.js"></script>
+    <script src="/static/assets/js/custom.js"></script>
 
 
     <script>
@@ -174,7 +174,23 @@
       setTimeout(function() {
       }, 1000);   
     }
-        
+
+    function getMoney(occ, loc) {
+      $.ajax({
+        method: 'POST',
+        url: 'http://localhost:5000/money',
+        data: {
+          occ: occ,
+          loc: loc
+        },
+        dataType: 'application/json',
+        success: function(res) {
+          console.log("SUCCESS")
+          console.log(res)
+        }
+      })
+    }
+
     $('nav.portfolio-filter ul a').on('click', function() {
         var selector = $(this).attr('data-filter');
         $container.isotope({ filter: selector }, refreshWaypoints());
