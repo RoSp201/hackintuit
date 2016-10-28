@@ -13,4 +13,4 @@ def index():
 	        'body': 'Beautiful day in Portland!' 
     	}
     ]
-    return render_template("base.html", user=user, posts=posts, title=title)
+    return render_template("index.html", user=user, posts=posts, title=title)
